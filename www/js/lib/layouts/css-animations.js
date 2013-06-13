@@ -81,7 +81,11 @@
 		}
 		cssRule += "}";
 
-		this.original.insertRule(cssRule);
+		if('appendRule' in this.original) {
+            this.original.appendRule(cssRule);
+        } else {
+            this.original.insertRule(cssRule);
+        } 
 		this.initKeyframes();
 	};
 

@@ -40,11 +40,14 @@ define(function(require) {
         },
 
         appendItem: function(item) {
-            var row = new ListViewRow({ model: item,
-                                        titleField: this.options.titleField,
-                                        render: this.options.renderRow,
-                                        nextView: this.options.nextView,
-                                        parent: this });
+            var row = new ListViewRow({
+                model: item,
+                titleField: this.options.titleField,
+                render: this.options.renderRow,
+                nextView: this.options.nextView,
+                parent: this 
+            });
+            
             $('._list', this.el).append(row.render().el);
         }
     });

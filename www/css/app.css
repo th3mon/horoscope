@@ -42,3 +42,80 @@ x-listview.list li:before {
     margin-right: 5px;
     vertical-align: middle;
 }
+
+.btns {
+    list-style-type: none;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.btns li {
+    float: left;
+    margin-right: 8px;
+}
+.btns li:last-child {
+    margin-right: 0;
+}
+.btns .btn-horoscope {
+    background: url("../img/icons.png") 0 0 no-repeat;
+    text-indent: -20000em;
+    display: block;
+    width: 88px;
+    height: 86px;
+}
+
+.btns .taurus {
+    background-position: -88px 0;
+}
+.btns .gemini {
+    background-position: 100% 0px;
+}
+
+.btns .cancer {
+    background-position: 0 -86px;
+}
+.btns .leo {
+    background-position: -88px -86px;
+}
+.btns .virgo {
+    background-position: -88px 100%;
+}
+
+.btns .libra {
+    background-position: 0 -171px;
+}
+.btns .scorpio {
+    background-position: -89px -171px;
+}
+.btns .sagittarius {
+    background-position: 100% -171px;
+}
+
+.btns .capricorn {
+    background-position: 0 -256px;
+}
+.btns .aquarius {
+    background-position: -88px -257px;
+}
+.btns .pisces {
+    background-position: 100% -256px;
+}
+
+.wrapper-instal-btn {
+    margin: 10px auto;
+}
+.btn-instal {
+    display: block;
+    margin: 0 auto;
+}
+
+.loading {
+    position: relative;
+}
+.loading .overflow {
+    background: url("../img/ajax-loader.gif") 50% 50% no-repeat;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
