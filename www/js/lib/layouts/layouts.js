@@ -3,7 +3,10 @@ define(function(require) {
     var $ = require('zepto');
     var xtag = require('x-tag');
     var BasicView = require('./view');
-    var ListView = require('./list');
+    // var ListView = require('./list');
+    var views = require('./list');
+    var ListView = views.ListView;
+    var HoroscopeListView = views.HoroscopeListView;
 
     function initTag(tag) {
         var view = tag.view;
@@ -65,9 +68,9 @@ define(function(require) {
 
     xtag.register('x-listview', {
         onCreate: function() {
-            this.view = new ListView({
+            this.view = new HoroscopeListView({
                 el: this,
-                collection: new ListView.defaultListType()
+                collection: new HoroscopeListView.defaultListType()
             });
             initTag(this);
         },

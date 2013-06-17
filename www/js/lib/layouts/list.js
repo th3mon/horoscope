@@ -152,7 +152,43 @@ define(function(require) {
         }
     });
 
-    ListView.defaultListType = ItemList;
+    var HoroscopeListView = ListView.extend({
+        appendItem: function(item) {
+            var
+                row = new HoroscopeListViewRow({
+                    model: item,
+                    titleField: this.options.titleField,
+                    render: this.options.renderRow,
+                    nextView: this.options.nextView,
+                    parent: this 
+                }),
+                _$list = $('._list', this.el),
+                renderedRow = row.render();
 
-    return ListView;
+            console.log(_$list);
+            console.log(renderedRow);
+            
+            _$list.append(renderedRow.el);
+        }
+    });
+
+    var HoroscopeListViewRow = ListViewRow.extend({
+        render: function() {
+            var model = this.model;
+
+            (new ListViewRow(this)).render.apply(this, this);
+
+            this.$el.addClass(model.attributes.title);
+
+            return this;
+        }
+    });
+
+    ListView.defaultListType = ItemList;
+    HoroscopeListView.defaultListType = ItemList;
+
+    return {
+        ListView: ListView,
+        HoroscopeListView: HoroscopeListView
+    };
 });
