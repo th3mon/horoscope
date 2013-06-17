@@ -142,7 +142,7 @@ define(function(require) {
 
         open: function() {
             var opts = this.options;
-            var sel = opts.nextView || 'x-view.detail';
+            var sel = opts.nextView || 'x-view.details';
 
             var viewElement = $(sel).get(0);
 

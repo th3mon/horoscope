@@ -18,19 +18,19 @@
 
     <x-view id="app">
       <x-view class="home">
-        <x-listview class="list">
-          <header>
-            <h1>Horoscope</h1>
-          </header>
+        <x-view class="homesub">
+            <x-listview class="list">
+              <header>
+                <h1>Horoscope</h1>
+              </header>
+            </x-listview>
+            <x-view class="details">
+              <header><h1>Details</h1></header>
+              
+              This item has the title "<span class="title"></span>"
+            </x-view>
         </x-view>
-
-        <x-view class="details">
-          <header><h1>Details</h1></header>
-          
-          This item has the title "<span class="title"></span>"
-        </x-view>
-      </x-listview>
-
+      </x-view>
       <x-view class="foo">
         <h1>Section #1</h1>
         <p>
