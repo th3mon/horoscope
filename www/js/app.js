@@ -30,22 +30,32 @@ define(function(require) {
             buildHoroscopeList = function() {
                 var list = d.querySelector(".list"),
                     horoscopeData = [
-                        {title: "aries", content: "content goes here", date: new Date()},
-                        {title: "taurus", content: "content goes here", date: new Date()},
-                        {title: "gemini", content: "content goes here", date: new Date()},
-                        {title: "cancer", content: "content goes here", date: new Date()},
-                        {title: "leo", content: "content goes here", date: new Date()},
-                        {title: "virgo", content: "content goes here", date: new Date()},
-                        {title: "libra", content: "content goes here", date: new Date()},
-                        {title: "scorpio", content: "content goes here", date: new Date()},
-                        {title: "sagittarius", content: "content goes here", date: new Date()},
-                        {title: "capricorn", content: "content goes here", date: new Date()},
-                        {title: "aqarius", content: "content goes here", date: new Date()},
-                        {title: "pisces", content: "content goes here", date: new Date()}
-                    ];
+                        {title: "aries", content: "", date: new Date()},
+                        {title: "taurus", content: "", date: new Date()},
+                        {title: "gemini", content: "", date: new Date()},
+                        {title: "cancer", content: "", date: new Date()},
+                        {title: "leo", content: "", date: new Date()},
+                        {title: "virgo", content: "", date: new Date()},
+                        {title: "libra", content: "", date: new Date()},
+                        {title: "scorpio", content: "", date: new Date()},
+                        {title: "sagittarius", content: "", date: new Date()},
+                        {title: "capricorn", content: "", date: new Date()},
+                        {title: "aqarius", content: "", date: new Date()},
+                        {title: "pisces", content: "", date: new Date()}
+                    ],
+                    url = "http://pipes.yahoo.com/pipes/pipe.run?_id=6772986aed90886ca3e30b9f672c3e15&_render=json";
 
-                horoscopeData.forEach(function(el) {
-                    list.add(el);
+                $.getJSON(url, function(data) {
+                    var
+                        content = "",
+                        pubTime = null;
+
+                    if (data && data.value) {
+                        horoscopeData.forEach(function(el, index) {
+                            el.content = data.value.items[index].content;
+                            list.add(el);
+                        });
+                    }
                 });
 
                 list.nextView = 'x-view.details';
