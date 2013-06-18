@@ -13,7 +13,6 @@ define(function(require) {
     Content.prototype.setContent = function(text) {
         this.text = text;
         $(this.el).html(text);
-        console.log(this.el);
     };
 
     return Content;

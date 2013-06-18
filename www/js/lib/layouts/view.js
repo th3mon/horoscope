@@ -66,7 +66,6 @@ define(function(require) {
 
             if (el.children(".content").length) {
                 this.content = new Content(this);
-                console.log("content on board");
             }
 
             // We need to manipulate all of the child nodes, including
@@ -194,8 +193,6 @@ define(function(require) {
                 text = model.get("content");
                 this.content.setContent(text);
             }
-
-            console.log("BasicView.setContet");
         },
 
         open: function(model, anim) {
