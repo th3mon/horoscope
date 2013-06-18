@@ -76,7 +76,6 @@ define(function(require) {
             }
 
             animations.remove(anim);
-            console.log('ending');
         });
     }
 
