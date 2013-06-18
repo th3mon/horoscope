@@ -6,6 +6,7 @@ define(function(require) {
     var anims = require('./anim');
     var Header = require('./header');
     var Footer = require('./footer');
+    var Desc = require("./desc");
 
     function FakeView() {
         this._stack = [];
