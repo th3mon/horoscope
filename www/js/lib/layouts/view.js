@@ -6,7 +6,7 @@ define(function(require) {
     var anims = require('./anim');
     var Header = require('./header');
     var Footer = require('./footer');
-    var Desc = require("./desc");
+    var Content = require("./content");
 
     function FakeView() {
         this._stack = [];
@@ -62,6 +62,11 @@ define(function(require) {
             if(el.children('footer').length) {
                 this.footer = new Footer(this);
                 el.children('footer').remove();
+            }
+
+            if (el.children(".content").length) {
+                this.content = new Content(this);
+                console.log("content on board");
             }
 
             // We need to manipulate all of the child nodes, including
@@ -181,6 +186,18 @@ define(function(require) {
             this.header.setTitle(text);
         },
 
+        setContet: function(){
+            var model = this.model,
+            text = "";
+
+            if (model && model.get("content")) {
+                text = model.get("content");
+                this.content.setContent(text);
+            }
+
+            console.log("BasicView.setContet");
+        },
+
         open: function(model, anim) {
             // Open a view and push it on the parent view's navigation
             // stack
@@ -219,6 +236,10 @@ define(function(require) {
             stack.push(this.el);
             this.model = model;
             this.setTitle();
+
+            if (this.content) {
+                this.setContet();
+            }
 
             // This method fires when this view appears in the app, so bind
             // the render function to the current model's change event

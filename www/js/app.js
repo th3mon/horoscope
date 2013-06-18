@@ -30,18 +30,18 @@ define(function(require) {
             buildHoroscopeList = function() {
                 var list = d.querySelector(".list"),
                     horoscopeData = [
-                        {title: "aries", desc: "content goes here", date: new Date()},
-                        {title: "taurus", desc: "content goes here", date: new Date()},
-                        {title: "gemini", desc: "content goes here", date: new Date()},
-                        {title: "cancer", desc: "content goes here", date: new Date()},
-                        {title: "leo", desc: "content goes here", date: new Date()},
-                        {title: "virgo", desc: "content goes here", date: new Date()},
-                        {title: "libra", desc: "content goes here", date: new Date()},
-                        {title: "scorpio", desc: "content goes here", date: new Date()},
-                        {title: "sagittarius", desc: "content goes here", date: new Date()},
-                        {title: "capricorn", desc: "content goes here", date: new Date()},
-                        {title: "aqarius", desc: "content goes here", date: new Date()},
-                        {title: "pisces", desc: "content goes here", date: new Date()}
+                        {title: "aries", content: "content goes here", date: new Date()},
+                        {title: "taurus", content: "content goes here", date: new Date()},
+                        {title: "gemini", content: "content goes here", date: new Date()},
+                        {title: "cancer", content: "content goes here", date: new Date()},
+                        {title: "leo", content: "content goes here", date: new Date()},
+                        {title: "virgo", content: "content goes here", date: new Date()},
+                        {title: "libra", content: "content goes here", date: new Date()},
+                        {title: "scorpio", content: "content goes here", date: new Date()},
+                        {title: "sagittarius", content: "content goes here", date: new Date()},
+                        {title: "capricorn", content: "content goes here", date: new Date()},
+                        {title: "aqarius", content: "content goes here", date: new Date()},
+                        {title: "pisces", content: "content goes here", date: new Date()}
                     ];
 
                 horoscopeData.forEach(function(el) {
