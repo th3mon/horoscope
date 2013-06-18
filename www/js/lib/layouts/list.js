@@ -165,6 +165,9 @@ define(function(require) {
                 _$list = $('._list', this.el),
                 renderedRow = row.render();
 
+            console.log(_$list);
+            console.log(renderedRow);
+            
             _$list.append(renderedRow.el);
         }
     });
