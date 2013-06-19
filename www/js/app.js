@@ -15,6 +15,8 @@ define(function(require) {
     // Install the layouts
     require('layouts/layouts');
 
+    require("store2");
+
     // Write your app here.
 
     function formatDate(d) {
@@ -28,35 +30,74 @@ define(function(require) {
     $(function() {
         var
             buildHoroscopeList = function() {
-                var list = d.querySelector(".list"),
-                    horoscopeData = [
-                        {title: "aries", content: "", date: new Date()},
-                        {title: "taurus", content: "", date: new Date()},
-                        {title: "gemini", content: "", date: new Date()},
-                        {title: "cancer", content: "", date: new Date()},
-                        {title: "leo", content: "", date: new Date()},
-                        {title: "virgo", content: "", date: new Date()},
-                        {title: "libra", content: "", date: new Date()},
-                        {title: "scorpio", content: "", date: new Date()},
-                        {title: "sagittarius", content: "", date: new Date()},
-                        {title: "capricorn", content: "", date: new Date()},
-                        {title: "aqarius", content: "", date: new Date()},
-                        {title: "pisces", content: "", date: new Date()}
-                    ],
-                    url = "http://pipes.yahoo.com/pipes/pipe.run?_id=6772986aed90886ca3e30b9f672c3e15&_render=json";
+                var
+                    list = d.querySelector(".list"),
+                    updateData = function(){
+                        var
+                            url = "http://pipes.yahoo.com/pipes/pipe.run?_id=6772986aed90886ca3e30b9f672c3e15&_render=json",
+                            horoscopeData = (function (){
+                                var retVal = store("horoscopeData");
 
-                $.getJSON(url, function(data) {
-                    var
-                        content = "",
-                        pubTime = null;
+                                if (!retVal) {
+                                    retVal = [
+                                        {title: "aries", content: ""},
+                                        {title: "taurus", content: ""},
+                                        {title: "gemini", content: ""},
+                                        {title: "cancer", content: ""},
+                                        {title: "leo", content: ""},
+                                        {title: "virgo", content: ""},
+                                        {title: "libra", content: ""},
+                                        {title: "scorpio", content: ""},
+                                        {title: "sagittarius", content: ""},
+                                        {title: "capricorn", content: ""},
+                                        {title: "aqarius", content: ""},
+                                        {title: "pisces", content: ""}
+                                    ];
 
-                    if (data && data.value) {
-                        horoscopeData.forEach(function(el, index) {
-                            el.content = data.value.items[index].content;
-                            list.add(el);
-                        });
-                    }
-                });
+                                    retVal.pubTime = null;
+                                }
+
+                                return retVal;
+                            }()),
+                            mustUpdateData = function(pubTime) {
+                                var
+                                    now = Date.now(),
+                                    day = 1000 * 60 * 60 * 24,
+                                    retVal = false;
+
+                                if (null === pubTime) {
+                                    retVal = true;
+                                } else if (pubTime) {
+                                    retVal = ((now - pubTime) > day ? false : true) && !dataSaved;
+                                }
+
+                                return retVal;
+                            };
+
+                        if (mustUpdateData(horoscopeData.pubTime)) {
+                            $.getJSON(url, function(data) {
+                                var
+                                    content = "",
+                                    pubTime = null;
+
+                                if ((data && data.value)) {
+                                        horoscopeData.pubTime = (new Date(data.value.pubDate)).getTime();
+                                        horoscopeData.forEach(function(el, index) {
+                                            el.content = data.value.items[index].content;
+                                            list.add(el);
+                                        });
+
+                                        store("horoscopeData", horoscopeData);
+                                }
+                            });
+                        } else {
+                            horoscopeData.forEach(function(el, index) {
+                                list.add(el);
+                            });
+                        }
+                    };
+
+                updateData();
 
                 list.nextView = 'x-view.details';
             },
