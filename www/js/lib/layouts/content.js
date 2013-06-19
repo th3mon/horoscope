@@ -7,7 +7,6 @@ define(function(require) {
             this.parent = parent;
             this.$el = $el;
             this.el = $el.get(0);
-            console.log("this.text: ", this.text);
         };
 
     Content.prototype.setContent = function(text) {

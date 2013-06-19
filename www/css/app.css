@@ -8,6 +8,16 @@
 @import "fonts.css";
 
 /* Your styles here */
+x-view > header, x-listview > header, x-view > footer, x-listview > footer {
+    background: #c8483e;
+    background: -moz-linear-gradient(top,  #c8483e 0%, #b3291f 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c8483e), color-stop(100%,#b3291f));
+    background: -webkit-linear-gradient(top,  #c8483e 0%,#b3291f 100%);
+    background: -o-linear-gradient(top,  #c8483e 0%,#b3291f 100%);
+    background: -ms-linear-gradient(top,  #c8483e 0%,#b3291f 100%);
+    background: linear-gradient(to bottom,  #c8483e 0%,#b3291f 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c8483e', endColorstr='#b3291f',GradientType=0 );
+}
 
 html, body {
     height: 100%;
@@ -36,86 +46,53 @@ x-view .contents h1 {
 x-listview.list li:before {
     content: ' ';
     display: inline-block;
-    width: 15px;
-    height: 15px;
-    background: url(../img/glyphicons-halflings.png) no-repeat -95px -2px;
-    margin-right: 5px;
-    vertical-align: middle;
-}
-
-.btns {
-    list-style-type: none;
-    margin: 0 auto;
-    overflow: hidden;
-}
-.btns li {
-    float: left;
-    margin-right: 8px;
-}
-.btns li:last-child {
-    margin-right: 0;
-}
-.btns .btn-horoscope {
     background: url("../img/icons.png") 0 0 no-repeat;
-    text-indent: -20000em;
-    display: block;
+    margin-right: 15px;
+    vertical-align: middle;
     width: 88px;
     height: 86px;
 }
 
-.btns .taurus {
+x-listview.list li.taurus:before {
     background-position: -88px 0;
 }
-.btns .gemini {
+
+x-listview.list li.gemini:before {
     background-position: 100% 0px;
 }
 
-.btns .cancer {
+x-listview.list li.cancer:before {
     background-position: 0 -86px;
 }
-.btns .leo {
+
+x-listview.list li.leo:before {
     background-position: -88px -86px;
 }
-.btns .virgo {
+
+x-listview.list li.virgo:before {
     background-position: -88px 100%;
 }
 
-.btns .libra {
+x-listview.list li.libra:before {
     background-position: 0 -171px;
 }
-.btns .scorpio {
+
+x-listview.list li.scorpio:before {
     background-position: -89px -171px;
 }
-.btns .sagittarius {
+
+x-listview.list li.sagittarius:before {
     background-position: 100% -171px;
 }
 
-.btns .capricorn {
+x-listview.list li.capricorn:before {
     background-position: 0 -256px;
 }
-.btns .aquarius {
+
+x-listview.list li.aquarius:before {
     background-position: -88px -257px;
 }
-.btns .pisces {
+
+x-listview.list li.pisces:before {
     background-position: 100% -256px;
-}
-
-.wrapper-instal-btn {
-    margin: 10px auto;
-}
-.btn-instal {
-    display: block;
-    margin: 0 auto;
-}
-
-.loading {
-    position: relative;
-}
-.loading .overflow {
-    background: url("../img/ajax-loader.gif") 50% 50% no-repeat;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
 }
