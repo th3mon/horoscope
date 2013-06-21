@@ -35,6 +35,7 @@ define(function(require) {
                     updateData = function(){
                         var
                             url = "http://pipes.yahoo.com/pipes/pipe.run?_id=6772986aed90886ca3e30b9f672c3e15&_render=json",
+                            pubTime =  store("horoscopePubTime"),
                             horoscopeData = (function (){
                                 var retVal = store("horoscopeData");
 
@@ -53,8 +54,6 @@ define(function(require) {
                                         {title: "aqarius", content: ""},
                                         {title: "pisces", content: ""}
                                     ];
-
-                                    retVal.pubTime = null;
                                 }
 
                                 return retVal;
@@ -68,26 +67,27 @@ define(function(require) {
                                 if (null === pubTime) {
                                     retVal = true;
                                 } else if (pubTime) {
-                                    retVal = ((now - pubTime) > day ? false : true);
+                                    retVal = ((now - pubTime) > day ? true : false);
                                 }
 
                                 return retVal;
                             };
 
-                        if (mustUpdateData(horoscopeData.pubTime)) {
+                        if (mustUpdateData(pubTime)) {
                             $.getJSON(url, function(data) {
                                 var
                                     content = "",
                                     pubTime = null;
 
                                 if ((data && data.value)) {
-                                        horoscopeData.pubTime = (new Date(data.value.pubDate)).getTime();
+                                        pubTime = (new Date(data.value.pubDate)).getTime();
                                         horoscopeData.forEach(function(el, index) {
                                             el.content = data.value.items[index].content;
                                             list.add(el);
                                         });
 
                                         store("horoscopeData", horoscopeData);
+                                        store("horoscopePubTime", pubTime);
                                 }
                             });
                         } else {
