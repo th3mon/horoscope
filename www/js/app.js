@@ -68,7 +68,7 @@ define(function(require) {
                                 if (null === pubTime) {
                                     retVal = true;
                                 } else if (pubTime) {
-                                    retVal = ((now - pubTime) > day ? false : true) && !dataSaved;
+                                    retVal = ((now - pubTime) > day ? false : true);
                                 }
 
                                 return retVal;
